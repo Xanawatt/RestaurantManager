@@ -4,9 +4,8 @@
 Download and install git bash from here: https://gitforwindows.org/  
 Run git bash  
 Use cd to browse to a location you want the project to be stored  
-Use mkdir to create a folder for the project  
-cd inside the created folder  
 git clone https://github.com/Xanawatt/RestaurantManager.git  
+cd RestaurantManager
 
 <b>Verify that you can push to the repository:</b>  
 Perform a git pull to get changes from other members: git pull  
