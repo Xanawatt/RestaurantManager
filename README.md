@@ -7,7 +7,10 @@ Use cd to browse to a location you want the project to be stored
 git clone https://github.com/Xanawatt/RestaurantManager.git  
 cd RestaurantManager
 
-<b>Verify that you can push to the repository:</b>  
+
+
+<b>Verify that you can push to the repository:</b> 
+Before you can push to the repository, you need to be added to the verified collaborators list. DM me (Mark Schneider) on GroupMe with your GitHub username
 Perform a git pull to get changes from other members: git pull  
 Create a test text file with your name in it: echo "Your name here" >> your_name_here.txt  
 Add your file to the staging area: git add your_name_here.txt  
