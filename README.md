@@ -48,7 +48,8 @@ This is not an exhaustive list, please add to this as you think of additional th
 - Functionality
 	- Check system (create new check, add items to check, discount check if necessary, close check when payment is received)
 	
-	- Inventory system (shows how much of an item we have, how much it costs to order more, etc)
+	- Inventory system (shows how much of an item we have, how much 
+it costs to order more, etc) (Mark)
 	
 	- Table utilization tracking (a GUI that shows which tables are in use)
 	
