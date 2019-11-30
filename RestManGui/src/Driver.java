@@ -1,4 +1,5 @@
 import Menu.*;
+import Table.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,9 +20,22 @@ import org.xml.sax.SAXException;
  */
 public class Driver {
     
+    static Menu menu = new Menu();
+    
     
     public static void main(String args[]) {
-        Menu menu = new Menu();
+        buildMenu();
+        buildTables();
+        menu.getAllMenuItems();
+    }
+    
+    private static void buildTables() {
+        for (int i = 0; i < 5; i++) {
+            
+        }
+    }
+    
+    private static void buildMenu() {
         
         String filePath = "menu_items.xml";
         File xmlFile = new File(filePath);
@@ -39,8 +53,6 @@ public class Driver {
         } catch (SAXException | ParserConfigurationException | IOException e1) {
             e1.printStackTrace();
         }
-        
-        menu.getAllMenuItems();
     }
     
     private static MenuItem getMenuItem(Node node) {
