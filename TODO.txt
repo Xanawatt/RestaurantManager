@@ -1,0 +1,33 @@
+<b>TODO - read this and pick something</b>
+This is not an exhaustive list, please add to this as you think of additional things to add
+
+- GUI (It looks like Grant is doing this)
+
+- Base classes (Garrett)
+	- Menu (contains menu items)
+		- Menu item
+			- Variables: Name, item ID, price, serving size, type, gluten free
+			- Food item (type of Menu item)
+			- Drink item (type of Menu item)
+				
+	- Table
+		- Variables: Number of seats, occupied (true/false), assigned waiter
+		
+	- Check
+		- Variables: Total price, date, time, paid with, waiter name
+		
+	- Employee
+		- Variables: Name, employee ID, age, wage/salary
+		- Manager (type of Employee)
+		- Waiter (type of Employee)
+		- Chef (type of Employee)
+
+- Functionality
+	- Check system (create new check, add items to check, discount check if necessary, close check when payment is received)
+	
+	- Inventory system (shows how much of an item we have, how much it costs to order more, etc)
+	
+	- Table utilization tracking (a GUI that shows which tables are in use)
+	
+	- 
+- 
