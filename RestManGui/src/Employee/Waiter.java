@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Employee;
-
 /**
  *
  * @author garre
  */
-public class Waiter {
+public class Waiter extends Employee{
+    
+    public Waiter(String name, int age, String title, int id, double wage) {
+        this.name = name;
+        this.age = age;
+        this.title = title;
+        this.id = id;
+        this.wage = wage;
+    }
     
 }
