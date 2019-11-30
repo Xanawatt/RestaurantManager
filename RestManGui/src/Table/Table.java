@@ -10,5 +10,5 @@ package Table;
  * @author garre
  */
 public class Table {
-    
+  
 }
