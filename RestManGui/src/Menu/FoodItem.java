@@ -5,19 +5,9 @@ package Menu;
  */
 public class FoodItem extends MenuItem {
 
-    private boolean appetizer;
-    private boolean spicy;
+    private final boolean appetizer;
+    private final boolean spicy;
 
-    /**
-     *
-     * @param itemID
-     * @param itemName
-     * @param price
-     * @param calories
-     * @param appetizer
-     * @param spicy
-     */
-    
     public FoodItem(int itemID, String itemName, double price, int calories,
                     boolean appetizer, boolean spicy) {
         
@@ -53,7 +43,5 @@ public class FoodItem extends MenuItem {
     public int getCalories() {
         return calories;
     }
-    
-    
     
 }
