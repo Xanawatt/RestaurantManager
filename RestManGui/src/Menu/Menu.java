@@ -1,15 +1,35 @@
 package Menu;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  *
  * @author garre
  */
 public class Menu {
+    
+    ArrayList<MenuItem> menu = new ArrayList<MenuItem>();
+
+    public Menu() {
+    }
+    
+    public void addToMenu(MenuItem newItem) {
+        menu.add(newItem);
+    }
+    
+    public MenuItem getRandomMenuItem () {
+        
+        int randomInt = ThreadLocalRandom.current().nextInt(1, menu.size());
+        MenuItem choice = menu.get(randomInt);
+    
+        return choice;
+    }
+    
+    public void getAllMenuItems () {
+        for (MenuItem i : menu) {
+            System.out.println(i.getItemName());
+        }
+    }
     
 }
