@@ -29,7 +29,7 @@ This is not an exhaustive list, please add to this as you think of additional th
 - Base classes (Garrett)
 	- Menu (contains menu items)
 		- Menu item
-			- Variables: Name, item ID, price, serving size, type, gluten free
+			- Variables: price, serving size, type, gluten free
 			- Food item (type of Menu item)
 			- Drink item (type of Menu item)
 				
@@ -48,10 +48,14 @@ This is not an exhaustive list, please add to this as you think of additional th
 - Functionality
 	- Check system (create new check, add items to check, discount check if necessary, close check when payment is received)
 	
-	- Inventory system (shows how much of an item we have, how much 
-it costs to order more, etc) (Mark)
+	- Inventory system (shows how much of an item we have, how much it costs to order more, etc) (Mark)
+		- Inventory item
+			- Variables: Name, item ID, quantity of item, price to stock
+			- Parent of the MenuItem class
+			
 	
 	- Table utilization tracking (a GUI that shows which tables are in use)
+		- Probably a seperate GUI that spawns off the first one
 	
 	- 
 - 
