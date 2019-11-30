@@ -25,6 +25,7 @@ In the future when making changes to code, before you start working on code, do 
 This is not an exhaustive list, please add to this as you think of additional things to add
 
 - GUI (It looks like Grant is doing this)
+
 - Base classes (Garrett)
 	- Menu (contains menu items)
 		- Menu item
