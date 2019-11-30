@@ -18,6 +18,16 @@ public class Menu {
         menu.add(newItem);
     }
     
+    public MenuItem getMenuItem(String targetName) {
+        MenuItem menItem = new MenuItem();
+        for (MenuItem i : menu) {
+            if (i.getItemName().equals(targetName)) {
+                return i;
+            }
+        }
+        return menItem;
+    }
+    
     public MenuItem getRandomMenuItem () {
         
         int randomInt = ThreadLocalRandom.current().nextInt(1, menu.size());
