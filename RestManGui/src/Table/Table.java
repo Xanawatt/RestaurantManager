@@ -16,14 +16,14 @@ public class Table {
   
 
 
-public int numberofseats = 8;
-public boolean occupied = false;
+    public int numberofseats = 8;
+    public boolean occupied = false;
 
-public Table(int num, boolean o){
-    this.numberofseats=num;
-    this.occupied=o;
+    public Table(int num, boolean o){
+        this.numberofseats=num;
+        this.occupied=o;
     
-}
+    }
 
 
 
