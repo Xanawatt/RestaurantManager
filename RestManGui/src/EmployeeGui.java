@@ -17,7 +17,6 @@ public class EmployeeGui extends javax.swing.JFrame {
     public EmployeeGui() {
         initComponents();
     }
-    public tabletrackGUI g = new tabletrackGUI();
      
     /**
      * This method is called from within the constructor to initialize the form.
@@ -212,12 +211,11 @@ public class EmployeeGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void tableAvailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tableAvailActionPerformed
-    
-        g.setVisible(true);
+
     }//GEN-LAST:event_tableAvailActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
