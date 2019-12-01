@@ -20,21 +20,29 @@ public class Check {
     private boolean open; //Open checks are true or closed are false
     private double subtotal; //total price of all of the items
     private double total; // final total
+    private double discount;
     private ArrayList<MenuItem> items;
     
-    public Check(int id, Table table){
+    public Check(int id, Table table, double discount){
         
         this.id = id;
         this.table = table;
         this.open = true;
+        this.discount = discount;
         this.subtotal = 0.00;
         this.total = 0.00;
         
         items = new ArrayList<MenuItem>();
     }
+    
     public void addItems(MenuItem item){
         getItems().add(item);
         subtotal += item.getPrice();
+    }
+    
+    public void checkout(){ 
+        total = subtotal * (1 - getDiscount()); // discount would be a percent off ( 25% off would be discount == 0.25 )
+        open = false;
     }
 
     public int getId() {
@@ -59,6 +67,14 @@ public class Check {
 
     public ArrayList<MenuItem> getItems() {
         return items;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 }
 
