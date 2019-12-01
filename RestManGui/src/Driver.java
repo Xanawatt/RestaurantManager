@@ -1,4 +1,7 @@
 import Menu.*;
+import Table.*;
+import Employee.*;
+import Check.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,10 +22,36 @@ import org.xml.sax.SAXException;
  */
 public class Driver {
     
+    static Menu menu = new Menu();
+    static ArrayList<Employee> employees = new ArrayList<Employee>();
+    
     
     public static void main(String args[]) {
-        Menu menu = new Menu();
+        buildMenu();
+        buildTables();
+        buildEmployees();
+        new MainGUI().setVisible(true);
+    }
+    
+    private static void buildTables() {
         
+    }
+    
+    private static void buildEmployees() {
+        System.out.println("-----Building employees-----");
+        employees.add(new Chef("Rob", 37, "Head Chef", 0055, 17.50));
+        employees.add(new Chef("Dominic", 29, "Assistant Chef", 0056, 14.50));
+        employees.add(new Waiter("April", 40, "Waiter", 0057, 9.50));
+        employees.add(new Waiter("Nicole", 20, "Waiter", 0061, 9.50));
+        employees.add(new Manager("Victor", 50, "Manager", 0062, 25.00));
+        
+        for (Employee i : employees) {
+            System.out.println(i.getName());
+        }
+    }
+    
+    private static void buildMenu() {
+        System.out.println("-----Building menu items-----");
         String filePath = "menu_items.xml";
         File xmlFile = new File(filePath);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -44,7 +73,6 @@ public class Driver {
     }
     
     private static MenuItem getMenuItem(Node node) {
-        //XMLReaderDOM domReader = new XMLReaderDOM();
         MenuItem menitem = new MenuItem();
         if (node.getNodeType() == Node.ELEMENT_NODE) {
             Element element = (Element) node;
