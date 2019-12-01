@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author garre
+ * @author Ethan Norlander
  */
 public class Check {
     private int id;
