@@ -1,6 +1,7 @@
 import Menu.*;
 import Table.*;
 import Employee.*;
+import Check.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class Driver {
         buildMenu();
         buildTables();
         buildEmployees();
+        new MainGUI().setVisible(true);
     }
     
     private static void buildTables() {

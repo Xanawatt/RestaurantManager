@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 /**
  *
  * @author ortega
@@ -267,48 +260,39 @@ public class tabletrackGUI extends javax.swing.JFrame {
     Table[] table = new Table[8];
     
     private void checkTable1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable1ActionPerformed
-        // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_checkTable1ActionPerformed
 
     private void checkTable1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_checkTable1PropertyChange
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_checkTable1PropertyChange
 
     private void checkTable2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable2ActionPerformed
-        // TODO add your handling code here:
-        
-      
+
     }//GEN-LAST:event_checkTable2ActionPerformed
 
     private void checkTable3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable3ActionPerformed
-        // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_checkTable3ActionPerformed
 
     private void checkTable4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable4ActionPerformed
-        // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_checkTable4ActionPerformed
 
     private void checkTable5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable5ActionPerformed
-        // TODO add your handling code here:
-        
+  
     }//GEN-LAST:event_checkTable5ActionPerformed
 
     private void checkTable6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable6ActionPerformed
-        // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_checkTable6ActionPerformed
 
     private void checkTable7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable7ActionPerformed
-        // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_checkTable7ActionPerformed
 
     private void checkTable8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable8ActionPerformed
-        // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_checkTable8ActionPerformed
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -367,16 +351,7 @@ public class tabletrackGUI extends javax.swing.JFrame {
                 new tabletrackGUI().setVisible(true);
             }
         });
-        
-        
-        
     }
-    
-    
-    
-    
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox checkTable1;
     private javax.swing.JCheckBox checkTable2;
