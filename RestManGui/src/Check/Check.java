@@ -28,8 +28,37 @@ public class Check {
         this.table = table;
         this.open = true;
         this.subtotal = 0.00;
-        this.total = subtotal;
+        this.total = 0.00;
         
         items = new ArrayList<MenuItem>();
     }
+    public void addItems(MenuItem item){
+        getItems().add(item);
+        subtotal += item.getPrice();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Table getTable() {
+        return table;
+    }
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public ArrayList<MenuItem> getItems() {
+        return items;
+    }
 }
+
