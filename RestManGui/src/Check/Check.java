@@ -44,6 +44,14 @@ public class Check {
         total = subtotal * (1 - getDiscount()); // discount would be a percent off ( 25% off would be discount == 0.25 )
         open = false;
     }
+    
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+    
+    /*
+     Get Methods
+    */
 
     public int getId() {
         return id;
@@ -72,9 +80,4 @@ public class Check {
     public double getDiscount() {
         return discount;
     }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
 }
-
