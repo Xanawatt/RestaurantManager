@@ -5,8 +5,8 @@ package Menu;
  */
 public class DrinkItem extends MenuItem {
 
-    private boolean straw;
-    private String size;
+    private final boolean straw;
+    private final String size;
 
     /**
      *
