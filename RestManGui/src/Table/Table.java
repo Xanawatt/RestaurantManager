@@ -1,15 +1,26 @@
 package Table;
+
+import java.util.Arrays;
+
+
 import Employee.*;
 /**
  *
  * @author garre
  */
 public class Table {
-    
+  
+
     private String name;
     private int chairs;
     private boolean occupied;
     private Employee assignedWaiter;
+    public int numberofseats = 8;
+
+    public Table(int num, boolean o){
+        this.numberofseats=num;
+        this.occupied=o;
+    }
 
     public Table(String name, int chairs, boolean occupied, Employee assignedWaiter) {
         this.name = name;
