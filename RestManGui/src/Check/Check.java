@@ -40,8 +40,10 @@ public class Check {
         subtotal += item.getPrice();
     }
     
-    public void checkout(){ 
+    public void checkout(double tip){ 
         total = subtotal * (1 - getDiscount()); // discount would be a percent off ( 25% off would be discount == 0.25 )
+        total += total * 0.07;
+        total += tip;
         open = false;
     }
     
