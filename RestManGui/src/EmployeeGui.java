@@ -8,6 +8,7 @@
  *
  * @author Grant Lander
  */
+
 public class EmployeeGui extends javax.swing.JFrame {
 
     /**
@@ -16,7 +17,8 @@ public class EmployeeGui extends javax.swing.JFrame {
     public EmployeeGui() {
         initComponents();
     }
-
+    public tabletrackGUI g = new tabletrackGUI();
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,6 +49,11 @@ public class EmployeeGui extends javax.swing.JFrame {
         tableAvail = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setText("Employee");
 
@@ -209,10 +216,14 @@ public class EmployeeGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void tableAvailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tableAvailActionPerformed
-        // TODO add your handling code here:
-        tabletrackGUI g = new tabletrackGUI();
+    
         g.setVisible(true);
     }//GEN-LAST:event_tableAvailActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+       
+       
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

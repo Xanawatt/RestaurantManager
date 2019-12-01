@@ -5,10 +5,26 @@
  */
 package Table;
 
+import java.util.Arrays;
+
+
 /**
  *
  * @author garre
  */
 public class Table {
   
+
+
+public int numberofseats = 8;
+public boolean occupied = false;
+
+public Table(int num, boolean o){
+    this.numberofseats=num;
+    this.occupied=o;
+    
+}
+
+
+
 }

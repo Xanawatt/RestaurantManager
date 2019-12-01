@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Table;
+
 
 /**
  *
  * @author ortega
  */
+import Table.Table;
 public class tabletrackGUI extends javax.swing.JFrame {
 
     /**
@@ -52,7 +53,12 @@ public class tabletrackGUI extends javax.swing.JFrame {
         checkTable7 = new javax.swing.JCheckBox();
         checkTable8 = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Table 1");
@@ -79,12 +85,38 @@ public class tabletrackGUI extends javax.swing.JFrame {
         jLabel8.setText("jLabel8");
 
         checkTable1.setText("Available?");
+        checkTable1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkTable1ActionPerformed(evt);
+            }
+        });
+        checkTable1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                checkTable1PropertyChange(evt);
+            }
+        });
 
+        checkTable2.setSelected(true);
         checkTable2.setText("Available?");
+        checkTable2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkTable2ActionPerformed(evt);
+            }
+        });
 
         checkTable3.setText("Available?");
+        checkTable3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkTable3ActionPerformed(evt);
+            }
+        });
 
         checkTable4.setText("Available?");
+        checkTable4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkTable4ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Table 5");
@@ -111,12 +143,34 @@ public class tabletrackGUI extends javax.swing.JFrame {
         jLabel16.setText("jLabel16");
 
         checkTable5.setText("Available?");
+        checkTable5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkTable5ActionPerformed(evt);
+            }
+        });
 
+        checkTable6.setSelected(true);
         checkTable6.setText("Available?");
+        checkTable6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkTable6ActionPerformed(evt);
+            }
+        });
 
         checkTable7.setText("Available?");
+        checkTable7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkTable7ActionPerformed(evt);
+            }
+        });
 
+        checkTable8.setSelected(true);
         checkTable8.setText("Available?");
+        checkTable8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkTable8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,7 +263,77 @@ public class tabletrackGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    Table[] table = new Table[8];
+    
+    private void checkTable1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_checkTable1ActionPerformed
 
+    private void checkTable1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_checkTable1PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkTable1PropertyChange
+
+    private void checkTable2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable2ActionPerformed
+        // TODO add your handling code here:
+        
+      
+    }//GEN-LAST:event_checkTable2ActionPerformed
+
+    private void checkTable3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable3ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_checkTable3ActionPerformed
+
+    private void checkTable4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable4ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_checkTable4ActionPerformed
+
+    private void checkTable5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable5ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_checkTable5ActionPerformed
+
+    private void checkTable6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable6ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_checkTable6ActionPerformed
+
+    private void checkTable7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable7ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_checkTable7ActionPerformed
+
+    private void checkTable8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTable8ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_checkTable8ActionPerformed
+    
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        boolean[] tabledata = tablesstate();
+        
+        for (int i =0; i<8; i++){
+            table[i] = new Table(8,tabledata[i]);
+            
+       }
+        
+    }//GEN-LAST:event_formWindowClosing
+
+     public boolean[] tablesstate(){
+         boolean tables[] = new boolean[8];
+         tables[0] = checkTable1.isSelected();
+         tables[1] = checkTable2.isSelected();
+         tables[2] = checkTable3.isSelected();
+         tables[3] = checkTable4.isSelected();
+         tables[4] = checkTable5.isSelected();
+         tables[5] = checkTable6.isSelected();
+         tables[6] = checkTable7.isSelected();
+         tables[7] = checkTable8.isSelected();
+         
+         return tables;
+     }
     /**
      * @param args the command line arguments
      */
@@ -243,7 +367,15 @@ public class tabletrackGUI extends javax.swing.JFrame {
                 new tabletrackGUI().setVisible(true);
             }
         });
+        
+        
+        
     }
+    
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox checkTable1;
