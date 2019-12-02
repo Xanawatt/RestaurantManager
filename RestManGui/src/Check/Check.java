@@ -7,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author Ethan Norlander
  */
-public class Check {
+public class Check implements SimpleCheckout{
     private int id;
     private Table table;
     private boolean open; //Open checks are true or closed are false
@@ -28,11 +28,13 @@ public class Check {
         items = new ArrayList<MenuItem>();
     }
     
+    @Override
     public void addItems(MenuItem item){
         getItems().add(item);
         subtotal += item.getPrice();
     }
     
+    @Override
     public void checkout(double tip){ 
         total = subtotal * (1 - getDiscount()); // discount would be a percent off ( 25% off would be discount == 0.25 )
         total += total * 0.07;
@@ -40,6 +42,7 @@ public class Check {
         open = false;
     }
     
+    @Override
     public void setDiscount(double discount) {
         this.discount = discount;
     }
