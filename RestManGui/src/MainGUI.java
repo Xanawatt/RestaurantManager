@@ -10,6 +10,7 @@ public class MainGUI extends javax.swing.JFrame {
     
     public tabletrackGUI TableTracker = new tabletrackGUI();
     public CheckTrackerGUI CheckTracker = new CheckTrackerGUI();
+    public EmployeeTrackerGUI EmployeeTracker = new EmployeeTrackerGUI();
     
     public MainGUI() {
         initComponents();
@@ -63,7 +64,7 @@ public class MainGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmployeeButtonActionPerformed
-        
+       EmployeeTracker.setVisible(true); 
     }//GEN-LAST:event_EmployeeButtonActionPerformed
 
     private void CheckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckButtonActionPerformed
