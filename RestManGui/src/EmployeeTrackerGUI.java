@@ -70,15 +70,9 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
         updateBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         addcurrentemployeesBtn = new javax.swing.JButton();
-        backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList1MouseClicked(evt);
@@ -98,16 +92,6 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
         jLabel5.setText("ID:");
 
         jLabel6.setText("Salary:");
-
-        nameTxt.setText("jTextField1");
-
-        ageTxt.setText("jTextField2");
-
-        titleTxt.setText("jTextField3");
-
-        idTxt.setText("jTextField4");
-
-        salaryTxt.setText("jTextField5");
 
         addBtn.setText("Add Employee");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -141,13 +125,6 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
         addcurrentemployeesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addcurrentemployeesBtnActionPerformed(evt);
-            }
-        });
-
-        backBtn.setText("Back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
             }
         });
 
@@ -195,10 +172,6 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(salaryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(backBtn)
-                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,9 +218,7 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(salaryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                .addComponent(backBtn)
-                .addGap(21, 21, 21))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         pack();
@@ -305,15 +276,8 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         // TODO add your handling code here:
-
         
     }//GEN-LAST:event_jList1MouseClicked
-
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // user goes back to Main Menu
-        
-       // EmployeeTracker.setVisible(false);
-    }//GEN-LAST:event_backBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,7 +321,6 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JButton addcurrentemployeesBtn;
     private javax.swing.JTextField ageTxt;
-    private javax.swing.JButton backBtn;
     private javax.swing.JButton clearBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField idTxt;
