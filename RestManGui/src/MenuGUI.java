@@ -248,8 +248,8 @@ public class MenuGUI extends javax.swing.JFrame {
         itemSelected = menu.getMenuItem(index);
         txtItemName.setText(itemSelected.getItemName());
         txtItemID.setText(Integer.toString(itemSelected.getItemID()));
-        txtItemPrice.setText(Double.toString(itemSelected.getPrice()));
-        txtItemCalories.setText(Integer.toString(itemSelected.getCalories()));
+        txtItemPrice.setText(Double.toString(itemSelected.getItemPrice()));
+        txtItemCalories.setText(Integer.toString(itemSelected.getItemCalories()));
         if (itemSelected instanceof FoodItem) {
             FoodItem food = (FoodItem) itemSelected;
             if (food.isAppeitizer()) {
@@ -409,7 +409,7 @@ public class MenuGUI extends javax.swing.JFrame {
         }
         
         itemSelected = menu.getMenuItem(index);
-        if (JOptionPane.showConfirmDialog(this, "Are you sure you want to delete " + itemSelected.getItemName()) == 0) {
+        if (JOptionPane.showConfirmDialog(this, "Are you sure you want to delete " + itemSelected.getItemName() + "?") == 0) {
             menu.removeFromMenu(itemSelected);
             loadItems();
         }

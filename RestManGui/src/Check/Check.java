@@ -31,7 +31,7 @@ public class Check implements SimpleCheckout{
     @Override
     public void addItems(MenuItem item){
         getItems().add(item);
-        subtotal += item.getPrice();
+        subtotal += item.getItemPrice();
     }
     
     @Override

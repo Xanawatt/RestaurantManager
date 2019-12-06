@@ -30,11 +30,11 @@ public class MenuItem {
         this.itemName = itemName;
     }
     
-    public void setPrice(double price) {
+    public void setItemPrice(double price) {
         this.price = price;
     }
     
-    public void setCalories(int calories) {
+    public void setItemCalories(int calories) {
         this.calories = calories;
     }
     
@@ -46,11 +46,11 @@ public class MenuItem {
         return itemName;
     }
 
-    public double getPrice() {
+    public double getItemPrice() {
         return price;
     }
     
-    public int getCalories() {
+    public int getItemCalories() {
         return calories;
     }
     
