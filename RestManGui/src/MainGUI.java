@@ -9,8 +9,8 @@ public class MainGUI extends javax.swing.JFrame {
      */
     
     public tabletrackGUI TableTracker = new tabletrackGUI();
-    public CheckTrackerGUI CheckTracker = new CheckTrackerGUI();
     public EmployeeTrackerGUI EmployeeTracker = new EmployeeTrackerGUI();
+    public MenuGUI menuGUI = new MenuGUI();
     
     public MainGUI() {
         initComponents();
@@ -26,7 +26,6 @@ public class MainGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         EmployeeButton = new javax.swing.JButton();
-        CheckButton = new javax.swing.JButton();
         TableButton = new javax.swing.JButton();
         MenuButton = new javax.swing.JButton();
 
@@ -41,14 +40,6 @@ public class MainGUI extends javax.swing.JFrame {
         });
         getContentPane().add(EmployeeButton, new java.awt.GridBagConstraints());
 
-        CheckButton.setText("Checks");
-        CheckButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CheckButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CheckButton, new java.awt.GridBagConstraints());
-
         TableButton.setText("Tables");
         TableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +49,11 @@ public class MainGUI extends javax.swing.JFrame {
         getContentPane().add(TableButton, new java.awt.GridBagConstraints());
 
         MenuButton.setText("Menu");
+        MenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(MenuButton, new java.awt.GridBagConstraints());
 
         pack();
@@ -67,13 +63,13 @@ public class MainGUI extends javax.swing.JFrame {
        EmployeeTracker.setVisible(true); 
     }//GEN-LAST:event_EmployeeButtonActionPerformed
 
-    private void CheckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckButtonActionPerformed
-        CheckTracker.setVisible(true);
-    }//GEN-LAST:event_CheckButtonActionPerformed
-
     private void TableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TableButtonActionPerformed
         TableTracker.setVisible(true);
     }//GEN-LAST:event_TableButtonActionPerformed
+
+    private void MenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuButtonActionPerformed
+        menuGUI.setVisible(true);
+    }//GEN-LAST:event_MenuButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,7 +107,6 @@ public class MainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CheckButton;
     private javax.swing.JButton EmployeeButton;
     private javax.swing.JButton MenuButton;
     private javax.swing.JButton TableButton;
