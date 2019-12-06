@@ -20,14 +20,11 @@ public class DrinkItem extends MenuItem {
     
     public DrinkItem(int itemID, String itemName, double price, int calories,
                     boolean straw, String size) {
+        super(itemID, itemName, price, calories);
         
-        this.itemID = itemID;
-        this.itemName = itemName;
-        this.price = price;
-        this.calories = calories;
         this.straw = straw;
         this.size = size;
-        
+        MenuItem.nextID += 1;
     }
     
     public boolean isStraw() {
@@ -37,23 +34,4 @@ public class DrinkItem extends MenuItem {
     public String getSize() {
         return size;
     }
-
-    public int getItemID() {
-        return itemID;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public int getCalories() {
-        return calories;
-    }
-    
-    
-    
 }

@@ -10,14 +10,11 @@ public class FoodItem extends MenuItem {
 
     public FoodItem(int itemID, String itemName, double price, int calories,
                     boolean appetizer, boolean spicy) {
+        super(itemID, itemName, price, calories);
         
-        this.itemID = itemID;
-        this.itemName = itemName;
-        this.price = price;
-        this.calories = calories;
         this.appetizer = appetizer;
         this.spicy = spicy;
-        
+        MenuItem.nextID += 1;
     }
     
     public boolean isAppeitizer() {
@@ -27,21 +24,4 @@ public class FoodItem extends MenuItem {
     public boolean isSpicy() {
         return spicy;
     }
-
-    public int getItemID() {
-        return itemID;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public int getCalories() {
-        return calories;
-    }
-    
 }

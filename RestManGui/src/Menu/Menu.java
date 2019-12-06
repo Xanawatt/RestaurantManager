@@ -18,6 +18,15 @@ public class Menu {
         menu.add(newItem);
     }
     
+    public void removeFromMenu(MenuItem itemToDelete) {
+        menu.remove(itemToDelete);
+    }
+    
+    public void updateItemFromMenu(MenuItem itemToUpdate) {
+        int index = menu.indexOf(itemToUpdate);
+        menu.set(index, itemToUpdate);
+    }
+    
     public MenuItem getMenuItem(String targetName) {
         MenuItem menItem = new MenuItem();
         for (MenuItem i : menu) {
@@ -28,6 +37,10 @@ public class Menu {
         return menItem;
     }
     
+    public MenuItem getMenuItem(int index) {
+        return menu.get(index);
+    }
+    
     public MenuItem getRandomMenuItem () {
         
         int randomInt = ThreadLocalRandom.current().nextInt(1, menu.size());
@@ -36,10 +49,11 @@ public class Menu {
         return choice;
     }
     
-    public void getAllMenuItems () {
+    public ArrayList<MenuItem> getAllMenuItems () {
         for (MenuItem i : menu) {
             System.out.println(i.getItemName());
         }
+        return menu;
     }
     
 }

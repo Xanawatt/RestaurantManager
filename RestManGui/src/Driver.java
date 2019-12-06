@@ -105,4 +105,8 @@ public class Driver {
         return node.getNodeValue();
     }
     
+    public static Menu getMenu() {
+        return menu;
+    }
+    
 }
