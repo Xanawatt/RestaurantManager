@@ -23,7 +23,7 @@ import org.xml.sax.SAXException;
 public class Driver {
     
     static Menu menu = new Menu();
-    static ArrayList<Employee> employees = new ArrayList<Employee>();
+    static Employees employees = new Employees();
     
     
     public static void main(String args[]) {
@@ -39,15 +39,11 @@ public class Driver {
     
     private static void buildEmployees() {
         System.out.println("-----Building employees-----");
-        employees.add(new Chef("Rob", 37, "Head Chef", 1304, 17.50));
-        employees.add(new Chef("Dominic", 29, "Assistant Chef", 1593, 14.50));
-        employees.add(new Waiter("April", 40, "Waiter", 1810, 9.50));
-        employees.add(new Waiter("Nicole", 20, "Waiter", 1394, 9.50));
-        employees.add(new Manager("Victor", 50, "Manager", 1492, 25.00));
-        
-        for (Employee i : employees) {
-            System.out.println(i.getName());
-        }
+        employees.addEmployee(new Chef("Rob", 37, "Head Chef", 1, 17.50));
+        employees.addEmployee(new Chef("Dominic", 29, "Assistant Chef", 2, 14.50));
+        employees.addEmployee(new Waiter("April", 40, "Waiter", 3, 9.50));
+        employees.addEmployee(new Waiter("Nicole", 20, "Waiter", 4, 9.50));
+        employees.addEmployee(new Manager("Victor", 50, "Manager", 5, 25.00));
     }
     
     private static void buildMenu() {
@@ -107,6 +103,10 @@ public class Driver {
     
     public static Menu getMenu() {
         return menu;
+    }
+    
+    public static Employees getEmployees() {
+        return employees;
     }
     
 }

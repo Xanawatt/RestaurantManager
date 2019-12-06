@@ -1,4 +1,7 @@
 package Employee;
+
+import Menu.MenuItem;
+
 /**
  *
  * @author garre
@@ -6,11 +9,9 @@ package Employee;
 public class Chef extends Employee {
  
     public Chef(String name, int age, String title, int id, double wage) {
-        this.name = name;
-        this.age = age;
-        this.title = title;
-        this.id = id;
-        this.wage = wage;
+        super(name, age, title, id, wage);
+        
+        //Employee.nextID += 1;
     }
     
 }

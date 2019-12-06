@@ -10,37 +10,58 @@ public class Employee {
     String title;
     int id;
     double wage;
+    static int nextID = 1;
+    
+    public Employee() {
+        
+    }
+    
+    public Employee (String name, int age, String title, int id, double wage) {
+        this.name = name;
+        this.age = age;
+        this.title = title;
+        this.id = id;
+        this.wage = wage;
+        nextID += 1;
+    }
 
-    public String getName() {
+    public String getEmployeeName() {
         return name;
     }
 
-    public int getAge() {
+    public int getEmployeeAge() {
         return age;
     }
 
-    public String getTitle() {
+    public String getEmployeeTitle() {
         return title;
     }
 
-    public int getId() {
+    public int getEmployeeID() {
         return id;
     }
 
-    public double getWage() {
+    public double getEmployeeWage() {
         return wage;
     }
 
-    public void setAge(int age) {
+    public void setEmployeeName(String name) {
+        this.name = name;
+    }
+    
+    public void setEmployeeAge(int age) {
         this.age = age;
     }
 
-    public void setTitle(String title) {
+    public void setEmployeeTitle(String title) {
         this.title = title;
     }
 
-    public void setWage(double wage) {
+    public void setEmployeeWage(double wage) {
         this.wage = wage;
     }
     
+    public static int getNextID() {
+        return nextID;
+    }
 }

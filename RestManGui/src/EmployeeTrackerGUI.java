@@ -10,37 +10,24 @@
  */
 
 // Added import to be able to use DefaultListModel
+import Employee.Employee;
+import Employee.Employees;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 
 public class EmployeeTrackerGUI extends javax.swing.JFrame {
-
-    /**
-     * Creates new form EmployeeTrackerGUI
-     */
-   
-    // adding tracker for EmployeeTrackerGUI
-     
-    
-    // adding Model
+    Employees employees;
     DefaultListModel mod = new DefaultListModel();
     
     
     public EmployeeTrackerGUI() {
         initComponents();
-           }
-    
-   // method for adding employee information
-    private void add(String name, int age, String title, int id, double wage)
-    {
-        /* this is setting model to jList to be able to use the addElement
-        * fuctionality from the model, which adds things to jList.
-        */ 
-        jList1.setModel(mod);
-        mod.addElement("Name: " + name + " || Age: " + age + " years old" + " || Title: " + title + " || ID: " + id + " || Hourly Salary: $" + String.format("%.2f", wage));
-       
-       
+        employees = Driver.getEmployees();
+        loadEmployees();
     }
    
     /**
@@ -53,37 +40,32 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        lstEmployees = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        nameTxt = new javax.swing.JTextField();
-        ageTxt = new javax.swing.JTextField();
-        titleTxt = new javax.swing.JTextField();
-        idTxt = new javax.swing.JTextField();
-        salaryTxt = new javax.swing.JTextField();
-        addBtn = new javax.swing.JButton();
-        deleteBtn = new javax.swing.JButton();
-        updateBtn = new javax.swing.JButton();
-        clearBtn = new javax.swing.JButton();
-        addcurrentemployeesBtn = new javax.swing.JButton();
+        txtEmployeeName = new javax.swing.JTextField();
+        txtEmployeeAge = new javax.swing.JTextField();
+        txtEmployeeTitle = new javax.swing.JTextField();
+        txtEmployeeID = new javax.swing.JTextField();
+        txtEmployeeSalary = new javax.swing.JTextField();
+        btnAddEmployee = new javax.swing.JButton();
+        btnDeleteEmployee = new javax.swing.JButton();
+        btnUpdateEmployee = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
+        setResizable(false);
 
-        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jList1MouseClicked(evt);
+        lstEmployees.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstEmployeesValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(lstEmployees);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Employee Information List:");
@@ -98,38 +80,31 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
 
         jLabel6.setText("Salary:");
 
-        addBtn.setText("Add Employee");
-        addBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnAddEmployee.setText("Add Employee");
+        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
+                btnAddEmployeeActionPerformed(evt);
             }
         });
 
-        deleteBtn.setText("Delete Employee");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteEmployee.setText("Delete Employee");
+        btnDeleteEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+                btnDeleteEmployeeActionPerformed(evt);
             }
         });
 
-        updateBtn.setText("Update Employee");
-        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateEmployee.setText("Update Employee");
+        btnUpdateEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBtnActionPerformed(evt);
+                btnUpdateEmployeeActionPerformed(evt);
             }
         });
 
-        clearBtn.setText("Clear List");
-        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnClear.setText("Clear Text");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearBtnActionPerformed(evt);
-            }
-        });
-
-        addcurrentemployeesBtn.setText("Add Current Employees");
-        addcurrentemployeesBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addcurrentemployeesBtnActionPerformed(evt);
+                btnClearActionPerformed(evt);
             }
         });
 
@@ -138,157 +113,240 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(61, 61, 61)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(idTxt))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(updateBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(53, 53, 53)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(clearBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(deleteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(55, 55, 55)
-                                .addComponent(addcurrentemployeesBtn)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(salaryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtEmployeeID)
+                    .addComponent(txtEmployeeSalary)
+                    .addComponent(txtEmployeeTitle)
+                    .addComponent(txtEmployeeName)
+                    .addComponent(txtEmployeeAge)
+                    .addComponent(btnUpdateEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAddEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDeleteEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titleTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(98, 98, 98)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(addBtn)
-                                    .addComponent(deleteBtn))
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(updateBtn)
-                                    .addComponent(clearBtn)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(123, 123, 123)
-                        .addComponent(addcurrentemployeesBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
+                            .addComponent(txtEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(salaryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(159, Short.MAX_VALUE))
+                            .addComponent(txtEmployeeAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEmployeeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEmployeeSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUpdateEmployee)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddEmployee)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnClear)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDeleteEmployee)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // this is using the add method to add employee information
-        try
-        {
-        add(nameTxt.getText(), Integer.parseInt(ageTxt.getText()), titleTxt.getText(), Integer.parseInt(idTxt.getText()), Double.parseDouble(salaryTxt.getText()));
+    private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
+        addEmployee();
+    }//GEN-LAST:event_btnAddEmployeeActionPerformed
+
+    private void btnUpdateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEmployeeActionPerformed
+        updateEmployee();
+    }//GEN-LAST:event_btnUpdateEmployeeActionPerformed
+
+    private void btnDeleteEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeActionPerformed
+        deleteEmployee(true);
+    }//GEN-LAST:event_btnDeleteEmployeeActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtEmployeeAge.setText("");
+        txtEmployeeID.setText("");
+        txtEmployeeName.setText("");
+        txtEmployeeSalary.setText("");
+        txtEmployeeTitle.setText("");
+        loadEmployees();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void lstEmployeesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEmployeesValueChanged
+        Employee employeeSelected;
+        int index = lstEmployees.getSelectedIndex(); 
+        if (index < 0) {
+            return;
         }
-        catch (Exception e)
-       {
-      JOptionPane.showMessageDialog (null, "Error: Make sure name, age, title, ID, and Hourly Salary are valid.");
-       }
-    }//GEN-LAST:event_addBtnActionPerformed
-
-    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        // This is getting index of what user clicked on
-        int index = jList1.getSelectedIndex();
         
-        // This is updating the index of what the user clicked on
-        try
-        {
-        mod.setElementAt("Name: " + nameTxt.getText() + " || Age: " + Integer.parseInt(ageTxt.getText()) + " years old" + " || Title: " + titleTxt.getText() + " || ID: " + Integer.parseInt(idTxt.getText()) + " || Hourly Salary: $" + String.format("%.2f", Double.parseDouble(salaryTxt.getText())), index);
+        employeeSelected = employees.getEmployee(index);
+        txtEmployeeName.setText(employeeSelected.getEmployeeName());
+        txtEmployeeID.setText(Integer.toString(employeeSelected.getEmployeeID()));
+        txtEmployeeAge.setText(Integer.toString(employeeSelected.getEmployeeAge()));
+        txtEmployeeTitle.setText(employeeSelected.getEmployeeTitle());
+        txtEmployeeSalary.setText(Double.toString(employeeSelected.getEmployeeWage()));
+    }//GEN-LAST:event_lstEmployeesValueChanged
+
+    
+    private void loadEmployees() {
+        txtEmployeeID.setText(Integer.toString(Employee.getNextID()));
+        txtEmployeeID.setEnabled(false);
+        ArrayList<Employee> employeeList = employees.getAllEmployees();
+        lstEmployees.setModel(mod);
+        mod.removeAllElements();
+        
+        employeeList.forEach((i) -> {
+            mod.addElement(i.getEmployeeName());
+        });
+    }
+    
+    private void addEmployee() {
+        if (validateInput() == false) {
+            return;
         }
-        catch (Exception e)
-        {
-        JOptionPane.showMessageDialog (null, "Error: Make sure name, age, title, ID, and Hourly Salary are valid.");
+        
+        Employee employeeToAdd = new Employee(txtEmployeeName.getText(), 
+                                              Integer.parseInt(txtEmployeeAge.getText()), 
+                                              txtEmployeeTitle.getText(),
+                                              Integer.parseInt(txtEmployeeID.getText()),
+                                              Double.parseDouble(txtEmployeeSalary.getText()));
+        
+        
+        employees.addEmployee(employeeToAdd);
+        loadEmployees();
+        
+    }
+    
+    private void deleteEmployee(boolean check) {
+        Employee employeeSelected;
+        int index = lstEmployees.getSelectedIndex(); 
+        if (index < 0) {
+            return;
         }
-    }//GEN-LAST:event_updateBtnActionPerformed
-
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // This is getting the index of what user clicked on
-        int index = jList1.getSelectedIndex();
         
-        // This is deleting the index of what the user clicked on
-        mod.removeElementAt(index);
-    }//GEN-LAST:event_deleteBtnActionPerformed
-
-    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
-        // This is clearing the employee information list
-        mod.clear();
-        jList1.setModel(mod);
-    }//GEN-LAST:event_clearBtnActionPerformed
-
-    private void addcurrentemployeesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addcurrentemployeesBtnActionPerformed
-        // this is using the add method to add current employees information
-        add("Rob", 37, "Head Chef", 1304, 17.50);
-        add("Dominic", 29, "Assistant Chef", 1593, 14.50);
-        add("April", 40, "Waiter", 1810, 9.50);
-        add("Nicole", 20, "Waiter", 1394, 9.50);
-        add("Victor", 50, "Manager", 1492, 25.00);
-    }//GEN-LAST:event_addcurrentemployeesBtnActionPerformed
-
-    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-        // TODO add your handling code here:
+        employeeSelected = employees.getEmployee(index);
         
-    }//GEN-LAST:event_jList1MouseClicked
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // TODO add your handling code here:
+        if (!check) {
+            employees.removeEmployee(employeeSelected);
+            loadEmployees();
+            return;
+        }
         
-    }//GEN-LAST:event_formWindowClosed
-
+        if (JOptionPane.showConfirmDialog(this, "Are you sure you want to delete " + employeeSelected.getEmployeeName() + "?") == 0) {
+            employees.removeEmployee(employeeSelected);
+            loadEmployees();
+        }
+    }
+    
+    private void updateEmployee() {
+        if (validateInput() == false) {
+            return;
+        }
+        
+        Employee employeeSelected;
+        int index = lstEmployees.getSelectedIndex(); 
+        if (index < 0) {
+            return;
+        }
+            
+        
+        employeeSelected = employees.getEmployee(index);
+        if (JOptionPane.showConfirmDialog(this, "Are you sure you want to update " + employeeSelected.getEmployeeName() + "?") == 0) {
+            employeeSelected.setEmployeeName(txtEmployeeName.getText());
+            employeeSelected.setEmployeeAge(Integer.parseInt(txtEmployeeAge.getText()));
+            employeeSelected.setEmployeeTitle(txtEmployeeTitle.getText());
+            employeeSelected.setEmployeeWage(Double.parseDouble(txtEmployeeSalary.getText()));
+            
+            loadEmployees();
+        }
+        
+    }
+    
+    private void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    private void setFocus(JTextField textbox) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                textbox.requestFocus();
+            }
+        });
+        
+    }
+    
+    private boolean validateInput() {
+        if (txtEmployeeName.getText().length() == 0) {
+            showMessage("Please enter the Employee Name.");
+            setFocus(txtEmployeeName);
+            return false;
+        }
+        
+        try {
+            int age = Integer.parseInt(txtEmployeeAge.getText());
+            
+            if (age > 100 || age < 18) {
+                showMessage("Employee Age must be between 18-100.");
+                setFocus(txtEmployeeAge);
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            showMessage("Please enter an Integer for the Employee Age.");
+            setFocus(txtEmployeeAge);
+            return false;
+        }
+        
+        if (txtEmployeeTitle.getText().length() == 0) {
+            showMessage("Please enter the Employee Title.");
+            setFocus(txtEmployeeTitle);
+            return false;
+        }
+        
+        try {
+            Double.parseDouble(txtEmployeeSalary.getText());
+        } catch (NumberFormatException e) {
+            showMessage("Please enter a Double for the Employee Salary.");
+            setFocus(txtEmployeeSalary);
+            return false;
+        }
+        
+        return true;
+    }
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -328,23 +386,22 @@ public class EmployeeTrackerGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBtn;
-    private javax.swing.JButton addcurrentemployeesBtn;
-    private javax.swing.JTextField ageTxt;
-    private javax.swing.JButton clearBtn;
-    private javax.swing.JButton deleteBtn;
-    private javax.swing.JTextField idTxt;
+    private javax.swing.JButton btnAddEmployee;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDeleteEmployee;
+    private javax.swing.JButton btnUpdateEmployee;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nameTxt;
-    private javax.swing.JTextField salaryTxt;
-    private javax.swing.JTextField titleTxt;
-    private javax.swing.JButton updateBtn;
+    private javax.swing.JList<String> lstEmployees;
+    private javax.swing.JTextField txtEmployeeAge;
+    private javax.swing.JTextField txtEmployeeID;
+    private javax.swing.JTextField txtEmployeeName;
+    private javax.swing.JTextField txtEmployeeSalary;
+    private javax.swing.JTextField txtEmployeeTitle;
     // End of variables declaration//GEN-END:variables
 }
